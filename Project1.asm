@@ -19,7 +19,21 @@ global _start
 
 _start:
 
+
 print:
+    ;print msg
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, msg
+    mov rdx, msglen
+    syscall
+
+    ;read msg and swap the values (rudimentary and doesn't loop but it will work for the moment)
+    ;this definitely doesn't work but I will need to figure it out later as I am out of time at the moment.
+    mov rax, 0
+    mov rdi, 0
+    mov rsi, msg
+    xor rsi, 0x20
     mov rax, 1
     mov rdi, 1
     mov rsi, msg
