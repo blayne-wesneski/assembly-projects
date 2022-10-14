@@ -8,6 +8,7 @@
 section .data
 
     Input: times 64 db 0 ;64 byte buffer
+    InputLen: times 64
 
     Prompt:                 db  "Please type in a word: ", 0x00
     PromptLen:              EQU $-Prompt
@@ -41,6 +42,7 @@ _start:
     mov rdi, 1
     mov rsi, Input
     mov rdx, 64
+    syscall
 
 exit:
     mov rax, 60
