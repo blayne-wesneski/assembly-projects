@@ -35,3 +35,9 @@ _start:
     mov rdi, 0
     mov rsi, Input
     mov rdx, 64
+    syscall
+
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, Input
+    mov rdx, 64
