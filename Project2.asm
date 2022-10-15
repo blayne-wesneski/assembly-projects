@@ -64,6 +64,7 @@ isz:
 
     mov rsi, 0x61
     ret
+    syscall
 
 output:
 
