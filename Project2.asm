@@ -49,7 +49,7 @@ rotate:
     mov rax, 26
     mov esi, 3 ;key
 
-loop:
+_loop:
 
     ;load character from Input
     mov ch, [rdi]
