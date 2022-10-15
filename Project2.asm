@@ -43,13 +43,13 @@ _start:
     mov rdx, 64
     syscall
 
-_rotate:
+rotate:
 
     mov rdi, Input
     mov rax, 26
     mov esi, 3 ;key
 
-_loop:
+loop:
 
     ;load character from Input
     mov ch, [rdi]
@@ -57,9 +57,9 @@ _loop:
     mov cl, ch
     or cl, 0x20
     cmp cl, 'a'
-    jl .no_encoding
+    jl no_encoding
     cmp cl, 'z'
-    jl .no_encoding
+    jl no_encoding
 
     and cl, 0x1f
     add cl, esi
@@ -73,7 +73,7 @@ _loop:
     and ch, 0xE0
     or ch, ah
 
-.no_encoding:
+no_encoding:
  
     ;; write to the result
     mov [rdx], ch
