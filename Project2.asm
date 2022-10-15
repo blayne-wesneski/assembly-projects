@@ -57,7 +57,7 @@ _loop:
     mov cl, ch
     or cl, 0x20
     cmp cl, 'a'
-    jl ,no_encoding
+    jl no_encoding
     cmp cl, 'z'
     jl .no_encoding
 
@@ -73,7 +73,7 @@ _loop:
     and ch, 0xE0
     or ch, ah
 
-.no_encoding:
+no_encoding:
  
     ;; write to the result
     mov [rdx], ch
@@ -92,7 +92,7 @@ output:
     mov rdi, 1
     mov rsi, rdx
     mov rdx, 64
-    exit
+    syscall
 
 exit:
     mov rax, 60
