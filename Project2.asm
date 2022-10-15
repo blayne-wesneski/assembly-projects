@@ -45,53 +45,30 @@ _start:
 
 rotate:
 
+    mov eax, Input
+    mov rax, 4 ;key
     mov rdi, Input
-    mov rax, 26
-    mov esi, 3 ;key
 
-loop:
+loop1:
 
-    ;load character from Input
-    mov ch, [rdi]
+    mov rsi, [rdi]
+    cmp rsi, 0x7A ;check if 'z'
+    je isz
+    add rsi, rax
+    dec eax
+    jnz loop1
 
-    mov cl, ch
-    or cl, 0x20
-    cmp cl, 'a'
-    jl no_encoding
-    cmp cl, 'z'
-    jl no_encoding
+isz:
 
-    and cl, 0x1f
-    add cl, esi
-
-    dec cl
-    xor ax, ax
-    mov al, cl
-    div rax
-    inc ah
-
-    and ch, 0xE0
-    or ch, ah
-
-no_encoding:
- 
-    ;; write to the result
-    mov [rdx], ch
-
-    ;; prepare next iteration
-    inc rdi
-    inc rdx
-
-    ;; more to do?
-    and ch, ch
-    jnz _loop
+    mov rsi, 0x61
     ret
 
 output:
+
     mov rax, 1
     mov rdi, 1
-    mov rsi, rdx
-    mov rdx, 64
+    mov rsi, rsi
+    mov rdi, 64
     syscall
 
 exit:
