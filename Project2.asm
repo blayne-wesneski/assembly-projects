@@ -48,6 +48,7 @@ rotate:
     mov eax, Input
     mov rax, 4 ;key
     mov rdi, Input
+    syscall
 
 loop1:
 
@@ -57,6 +58,7 @@ loop1:
     add rsi, rax
     dec eax
     jnz loop1
+    syscall
 
 isz:
 
