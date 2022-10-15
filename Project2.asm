@@ -59,7 +59,7 @@ _loop:
     cmp cl, 'a'
     jl no_encoding
     cmp cl, 'z'
-    jl .no_encoding
+    jl no_encoding
 
     and cl, 0x1f
     add cl, esi
